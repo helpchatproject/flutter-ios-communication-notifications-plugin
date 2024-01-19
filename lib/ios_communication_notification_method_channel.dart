@@ -33,8 +33,9 @@ class MethodChannelIosCommunicationNotification
   }
 
   @override
-  Future<void> showNotification(NotificationInfo info) async {
-    await methodChannel.invokeMethod("showNotification", info.toMap());
+  Future<String?> showNotification(NotificationInfo info) async {
+    final String? identifier =  await methodChannel.invokeMethod<String?>("showNotification", info.toMap());
+    return identifier;
   }
 
   @override

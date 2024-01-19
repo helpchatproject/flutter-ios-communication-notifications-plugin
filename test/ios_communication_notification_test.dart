@@ -8,8 +8,8 @@ class MockIosCommunicationNotificationPlatform
     with MockPlatformInterfaceMixin
     implements IosCommunicationNotificationPlatform {
   @override
-  Future<void> showNotification(NotificationInfo info) async {
-    return;
+  Future<String?> showNotification(NotificationInfo info) async {
+    return "test_saeed";
   }
 
   @override

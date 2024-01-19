@@ -10,7 +10,7 @@ import 'package:ios_communication_notification/models/notification_info_model.da
 import 'ios_communication_notification_platform_interface.dart';
 
 class IosCommunicationNotification {
-  Future<void> showNotification(NotificationInfo info) {
+  Future<String?> showNotification(NotificationInfo info) {
     return IosCommunicationNotificationPlatform.instance.showNotification(info);
   }
 
