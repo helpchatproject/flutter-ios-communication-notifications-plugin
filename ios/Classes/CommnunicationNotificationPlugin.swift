@@ -25,7 +25,7 @@ class CommunicationNotificationPlugin {
         }
     }
 
-    func showNotification(_ notificationInfo: NotificationInfo) {
+    func showNotification(_ notificationInfo: NotificationInfo) -> String{
         var identifier = "";
         let notificationCenter = UNUserNotificationCenter.current()
         notificationCenter.getNotificationSettings {
