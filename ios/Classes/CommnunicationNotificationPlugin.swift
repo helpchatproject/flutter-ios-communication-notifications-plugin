@@ -26,6 +26,7 @@ class CommunicationNotificationPlugin {
     }
 
     func showNotification(_ notificationInfo: NotificationInfo) {
+        let identifier = "";
         let notificationCenter = UNUserNotificationCenter.current()
         notificationCenter.getNotificationSettings {
             settings in switch settings.authorizationStatus {
@@ -33,11 +34,11 @@ class CommunicationNotificationPlugin {
                 self.hasDuplicateNotification(notificationInfo) { hasDuplicate in
                     if !hasDuplicate {
                         // If no duplicate notification is found, proceed to show the new notification
-                        self.dispatchNotification(notificationInfo)
+                      identifier =  self.dispatchNotification(notificationInfo)
                     }
                 }
             case .denied:
-                return
+                return identifier
             case .notDetermined:
                 notificationCenter.requestAuthorization(options: [.alert, .sound]) {
                     didAllow, _ in
@@ -45,12 +46,12 @@ class CommunicationNotificationPlugin {
                         self.hasDuplicateNotification(notificationInfo) { hasDuplicate in
                             if !hasDuplicate {
                                 // If no duplicate notification is found, proceed to show the new notification
-                                self.dispatchNotification(notificationInfo)
+                                identifier = self.dispatchNotification(notificationInfo)
                             }
                         }
                     }
                 }
-            default: return
+            default: return identifier
             }
         }
     }
@@ -133,6 +134,7 @@ class CommunicationNotificationPlugin {
             
             // Add notification request
             UNUserNotificationCenter.current().add(request)
+            return identifier;
         }
     }
 }
