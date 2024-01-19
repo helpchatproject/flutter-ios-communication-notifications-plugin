@@ -56,7 +56,7 @@ class CommunicationNotificationPlugin {
         }
     }
     
-    func dispatchNotification(_ notificationInfo: NotificationInfo) {
+    func dispatchNotification(_ notificationInfo: NotificationInfo) -> String {
         if #available(iOS 15.0, *) {
             let uuid = UUID.init().uuidString
             let currentTime = Date().timeIntervalSince1970
@@ -134,7 +134,7 @@ class CommunicationNotificationPlugin {
             
             // Add notification request
             UNUserNotificationCenter.current().add(request)
-            return identifier;
+            return identifier
         }
     }
 
