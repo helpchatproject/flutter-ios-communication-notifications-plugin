@@ -26,7 +26,7 @@ class CommunicationNotificationPlugin {
     }
 
     func showNotification(_ notificationInfo: NotificationInfo) {
-        let identifier = "";
+        var identifier = "";
         let notificationCenter = UNUserNotificationCenter.current()
         notificationCenter.getNotificationSettings {
             settings in switch settings.authorizationStatus {
