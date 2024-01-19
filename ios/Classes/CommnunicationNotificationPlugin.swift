@@ -137,4 +137,12 @@ class CommunicationNotificationPlugin {
             return identifier;
         }
     }
+
+    fun cancelNotification(_ identifier : String){
+        UNUserNotificationCenter.current().getPendingNotificationRequests { (notificationRequests) in
+   var identifiers: [String] = [identifier]
+   UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: identifiers)
+   return
+}
+    }
 }

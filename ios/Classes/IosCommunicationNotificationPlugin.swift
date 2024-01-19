@@ -65,6 +65,12 @@ public class IosCommunicationNotificationPlugin: NSObject, FlutterPlugin {
                 result(false)
             }
             break
+        case "cancelNotification" :
+            let arguments = call.arguments as? [String: Any] ?? [String: Any]()
+            let identifier = arguments["identifier"] as? String ?? ""
+            CommunicationNotificationPlugin().cancelNotification(identifier)
+            result(true)
+            break
         default:
             result(FlutterMethodNotImplemented)
             break

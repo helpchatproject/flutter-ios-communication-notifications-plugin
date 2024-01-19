@@ -5,6 +5,7 @@
 // platforms in the `pubspec.yaml` at
 // https://flutter.dev/docs/development/packages-and-plugins/developing-packages#plugin-platforms.
 
+import 'package:ios_communication_notification/models/notification_cancel_model.dart';
 import 'package:ios_communication_notification/models/notification_info_model.dart';
 
 import 'ios_communication_notification_platform_interface.dart';
@@ -12,6 +13,10 @@ import 'ios_communication_notification_platform_interface.dart';
 class IosCommunicationNotification {
   Future<String?> showNotification(NotificationInfo info) {
     return IosCommunicationNotificationPlatform.instance.showNotification(info);
+  }
+
+  Future<void> cancelNotification(NotificationCancel cancel) {
+    return IosCommunicationNotificationPlatform.instance.cancelNotification(cancel);
   }
 
   Future<bool> isAvailable() {

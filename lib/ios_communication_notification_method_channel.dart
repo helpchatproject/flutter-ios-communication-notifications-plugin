@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import 'package:ios_communication_notification/models/notification_cancel_model.dart';
 import 'package:ios_communication_notification/models/notification_info_model.dart';
 
 import 'ios_communication_notification_platform_interface.dart';
@@ -34,7 +35,8 @@ class MethodChannelIosCommunicationNotification
 
   @override
   Future<String?> showNotification(NotificationInfo info) async {
-    final String? identifier =  await methodChannel.invokeMethod<String?>("showNotification", info.toMap());
+    final String? identifier = await methodChannel.invokeMethod<String?>(
+        "showNotification", info.toMap());
     return identifier;
   }
 
@@ -46,5 +48,11 @@ class MethodChannelIosCommunicationNotification
         await methodChannel.invokeMethod<bool>("isAvailable") ?? false;
 
     return isAvailable;
+  }
+
+  @override
+  Future<void> cancelNotification(NotificationCancel cancel) async {
+    await methodChannel.invokeMethod<String?>(
+        "cancelNotification", cancel.toMap());
   }
 }

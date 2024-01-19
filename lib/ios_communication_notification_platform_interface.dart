@@ -1,3 +1,4 @@
+import 'package:ios_communication_notification/models/notification_cancel_model.dart';
 import 'package:ios_communication_notification/models/notification_info_model.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
@@ -27,6 +28,10 @@ abstract class IosCommunicationNotificationPlatform extends PlatformInterface {
 
   Future<String?> showNotification(NotificationInfo info) {
     throw UnimplementedError('showNotification() has not been implemented.');
+  }
+
+  Future<void> cancelNotification(NotificationCancel cancel) {
+    throw UnimplementedError('cancelNotification() has not been implemented.');
   }
 
   Future<bool> isAvailable() {

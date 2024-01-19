@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:ios_communication_notification/ios_communication_notification_platform_interface.dart';
 import 'package:ios_communication_notification/ios_communication_notification_method_channel.dart';
+import 'package:ios_communication_notification/models/notification_cancel_model.dart';
 import 'package:ios_communication_notification/models/notification_info_model.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
@@ -22,6 +23,12 @@ class MockIosCommunicationNotificationPlatform
 
   @override
   Future<String?> getInitialPayload() => Future.value("lambiengcode");
+
+  @override
+  Future<void> cancelNotification(NotificationCancel cancel) {
+    // TODO: implement cancelNotification
+    throw UnimplementedError();
+  }
 }
 
 void main() {
