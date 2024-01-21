@@ -8,6 +8,7 @@ class NotificationInfo {
   final String content;
   final String id;
   final String value;
+  final String sound;
   final Function(String payload)? onPressed;
   NotificationInfo({
     required this.senderName,
@@ -15,6 +16,7 @@ class NotificationInfo {
     required this.content,
     required this.id,
     required this.value,
+    this.sound = 'alarm',
     this.onPressed,
   });
 
@@ -24,6 +26,7 @@ class NotificationInfo {
     String? content,
     String? value,
     String? id,
+    String? sound,
     Function(String payload)? onPressed,
   }) {
     return NotificationInfo(
@@ -31,6 +34,7 @@ class NotificationInfo {
       senderName: senderName ?? this.senderName,
       imageBytes: imageBytes ?? this.imageBytes,
       content: content ?? this.content,
+      sound: sound ?? this.sound,
       value: value ?? this.value,
       onPressed: onPressed ?? this.onPressed,
     );
@@ -42,6 +46,7 @@ class NotificationInfo {
       'senderName': senderName,
       'imageBytes': imageBytes,
       'content': content,
+      'sound': sound,
       'value': value,
     };
   }
@@ -60,6 +65,7 @@ class NotificationInfo {
     return other.senderName == senderName &&
         other.imageBytes == imageBytes &&
         other.id == id &&
+        other.sound == sound &&
         other.content == content &&
         other.value == value &&
         other.onPressed == onPressed;
@@ -70,6 +76,7 @@ class NotificationInfo {
     return senderName.hashCode ^
         imageBytes.hashCode ^
         id.hashCode ^
+    sound.hashCode ^
         content.hashCode ^
         value.hashCode ^
         onPressed.hashCode;

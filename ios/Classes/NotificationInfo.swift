@@ -6,4 +6,5 @@ struct NotificationInfo {
     var content: String
     var value: String
     var id : String
+    var sound : String
 }
