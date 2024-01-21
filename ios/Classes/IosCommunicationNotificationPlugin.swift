@@ -51,12 +51,14 @@ public class IosCommunicationNotificationPlugin: NSObject, FlutterPlugin {
             let senderName = arguments["senderName"] as? String ?? ""
             let uuid = arguments["id"] as? String ?? ""
             let content = arguments["content"] as? String ?? ""
+            let soundName = arguments["sound"] as? String ?? "alarm"
             guard let avatar = (arguments["imageBytes"] as? FlutterStandardTypedData)?.data else {
                 result(nil)
                 return
             }
             let value = arguments["value"] as? String ?? ""
-            CommunicationNotificationPlugin().showNotification(NotificationInfo(senderName: senderName, pngImage: avatar, content: content, value: value , id:uuid))
+            CommunicationNotificationPlugin().showNotification(NotificationInfo(senderName: senderName, pngImage: avatar, content: content, value: value , id:uuid,
+            sound:soundName))
             result(true)
             break
         case "isAvailable":

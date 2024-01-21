@@ -29,6 +29,12 @@ class MockIosCommunicationNotificationPlatform
     // TODO: implement cancelNotification
     throw UnimplementedError();
   }
+
+  @override
+  Future<void> cancelAllNotification() {
+    // TODO: implement cancelAllNotification
+    throw UnimplementedError();
+  }
 }
 
 void main() {
