@@ -34,6 +34,10 @@ abstract class IosCommunicationNotificationPlatform extends PlatformInterface {
     throw UnimplementedError('cancelNotification() has not been implemented.');
   }
 
+  Future<void> cancelAllNotification() {
+    throw UnimplementedError('cancelNotification() has not been implemented.');
+  }
+
   Future<bool> isAvailable() {
     throw UnimplementedError('isAvailable() has not been implemented.');
   }

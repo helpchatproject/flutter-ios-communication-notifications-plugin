@@ -50,7 +50,11 @@ class MethodChannelIosCommunicationNotification
 
   @override
   Future<void> cancelNotification(NotificationCancel cancel) async {
-    await methodChannel.invokeMethod<String?>(
-        "cancelNotification", cancel.toMap());
+    await methodChannel.invokeMethod("cancelNotification", cancel.toMap());
+  }
+
+  @override
+  Future<void> cancelAllNotification() async {
+    await methodChannel.invokeMethod("cancelAllNotification");
   }
 }

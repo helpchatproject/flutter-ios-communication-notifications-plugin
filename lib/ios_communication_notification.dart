@@ -20,6 +20,11 @@ class IosCommunicationNotification {
         .cancelNotification(cancel);
   }
 
+  Future<void> cancelAllNotification() {
+    return IosCommunicationNotificationPlatform.instance
+        .cancelAllNotification();
+  }
+
   Future<bool> isAvailable() {
     return IosCommunicationNotificationPlatform.instance.isAvailable();
   }

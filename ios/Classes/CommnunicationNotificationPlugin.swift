@@ -137,8 +137,17 @@ class CommunicationNotificationPlugin {
     }
 
     func cancelNotification(_ identifier : String){
-  UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: [identifier])
+    print("iden is :  ")
+    print(identifier);
+    UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: [identifier])
    return
 }
+
+    func cancelAllNotification(){
+  UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+   return
+}
+
+
 
 }
