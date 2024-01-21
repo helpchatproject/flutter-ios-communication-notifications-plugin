@@ -137,10 +137,8 @@ class CommunicationNotificationPlugin {
     }
 
     func cancelNotification(_ identifier : String){
-        UNUserNotificationCenter.current().getPendingNotificationRequests { (notificationRequests) in
-   var identifiers: [String] = [identifier]
-   UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: identifiers)
+  UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: [identifier])
    return
 }
-    }
+
 }
