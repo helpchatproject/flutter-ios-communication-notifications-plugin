@@ -72,7 +72,7 @@ public class IosCommunicationNotificationPlugin: NSObject, FlutterPlugin {
             CommunicationNotificationPlugin().cancelNotification(identifier)
             result(true)
             break
-        case "cancelNotification" :
+        case "cancelAllNotification" :
             CommunicationNotificationPlugin().cancelAllNotification()
             result(true)
             break
