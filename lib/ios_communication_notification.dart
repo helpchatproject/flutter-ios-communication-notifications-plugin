@@ -11,12 +11,13 @@ import 'package:ios_communication_notification/models/notification_info_model.da
 import 'ios_communication_notification_platform_interface.dart';
 
 class IosCommunicationNotification {
-  Future<String?> showNotification(NotificationInfo info) {
+  Future<void> showNotification(NotificationInfo info) {
     return IosCommunicationNotificationPlatform.instance.showNotification(info);
   }
 
   Future<void> cancelNotification(NotificationCancel cancel) {
-    return IosCommunicationNotificationPlatform.instance.cancelNotification(cancel);
+    return IosCommunicationNotificationPlatform.instance
+        .cancelNotification(cancel);
   }
 
   Future<bool> isAvailable() {

@@ -25,8 +25,7 @@ class CommunicationNotificationPlugin {
         }
     }
 
-    func showNotification(_ notificationInfo: NotificationInfo) -> String{
-        var identifier = "";
+    func showNotification(_ notificationInfo: NotificationInfo){
         let notificationCenter = UNUserNotificationCenter.current()
         notificationCenter.getNotificationSettings {
             settings in switch settings.authorizationStatus {
@@ -34,11 +33,11 @@ class CommunicationNotificationPlugin {
                 self.hasDuplicateNotification(notificationInfo) { hasDuplicate in
                     if !hasDuplicate {
                         // If no duplicate notification is found, proceed to show the new notification
-                      identifier =  self.dispatchNotification(notificationInfo)
+                      self.dispatchNotification(notificationInfo)
                     }
                 }
             case .denied:
-                return identifier
+                return
             case .notDetermined:
                 notificationCenter.requestAuthorization(options: [.alert, .sound]) {
                     didAllow, _ in
@@ -46,21 +45,21 @@ class CommunicationNotificationPlugin {
                         self.hasDuplicateNotification(notificationInfo) { hasDuplicate in
                             if !hasDuplicate {
                                 // If no duplicate notification is found, proceed to show the new notification
-                                identifier = self.dispatchNotification(notificationInfo)
+                                 self.dispatchNotification(notificationInfo)
                             }
                         }
                     }
                 }
-            default: return identifier
+            default: return
             }
         }
     }
     
-    func dispatchNotification(_ notificationInfo: NotificationInfo) -> String {
+    func dispatchNotification(_ notificationInfo: NotificationInfo) {
         if #available(iOS 15.0, *) {
-            let uuid = UUID.init().uuidString
+            let uuid = notificationInfo.id
             let currentTime = Date().timeIntervalSince1970
-            let identifier = "\(IosCommunicationConstant.prefixIdentifier):\(uuid):\(currentTime)"
+            let identifier = "\(IosCommunicationConstant.prefixIdentifier):\(uuid)"
 
             var content = UNMutableNotificationContent()
             
@@ -134,7 +133,6 @@ class CommunicationNotificationPlugin {
             
             // Add notification request
             UNUserNotificationCenter.current().add(request)
-            return identifier
         }
     }
 

@@ -49,14 +49,15 @@ public class IosCommunicationNotificationPlugin: NSObject, FlutterPlugin {
         case "showNotification":
             let arguments = call.arguments as? [String: Any] ?? [String: Any]()
             let senderName = arguments["senderName"] as? String ?? ""
+            let uuid = arguments["id"] as? String ?? ""
             let content = arguments["content"] as? String ?? ""
             guard let avatar = (arguments["imageBytes"] as? FlutterStandardTypedData)?.data else {
                 result(nil)
                 return
             }
             let value = arguments["value"] as? String ?? ""
-            let identifier = CommunicationNotificationPlugin().showNotification(NotificationInfo(senderName: senderName, pngImage: avatar, content: content, value: value))
-            result(identifier)
+            CommunicationNotificationPlugin().showNotification(NotificationInfo(senderName: senderName, pngImage: avatar, content: content, value: value , id:uuid))
+            result(true)
             break
         case "isAvailable":
             if #available(iOS 15.0, *) {
