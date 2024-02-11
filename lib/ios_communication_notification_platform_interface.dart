@@ -45,6 +45,9 @@ abstract class IosCommunicationNotificationPlatform extends PlatformInterface {
   void onClickNotification(Function(String payload) onClick) {
     throw UnimplementedError('onClickNotification() has not been implemented.');
   }
+  void onBackNotification(Function(String payload) onClick) {
+    throw UnimplementedError('onClickNotification() has not been implemented.');
+  }
 
   Future<String?> getInitialPayload() async {
     throw UnimplementedError('getInitialPayload() has not been implemented.');

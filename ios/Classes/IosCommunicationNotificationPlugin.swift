@@ -22,6 +22,17 @@ public class IosCommunicationNotificationPlugin: NSObject, FlutterPlugin {
             defaults.set(userInfo["data"], forKey: IosCommunicationConstant.payloadStored)
         }
     }
+
+    public func getLocalizeAndShow(_ userInfo: [AnyHashable : Any]) {
+            if (self.flutterChannel != nil) {
+                self.flutterChannel?.invokeMethod("onBackCall", arguments: userInfo)
+            } else {
+                // Save to local storage - for get initial payload
+                let defaults = UserDefaults.standard
+                defaults.set(convertDateToString(Date()), forKey: IosCommunicationConstant.payloadUpdatedAt)
+                defaults.set(userInfo["data"], forKey: IosCommunicationConstant.payloadStored)
+            }
+        }
     
     public static func register(with registrar: FlutterPluginRegistrar) {
         let channel = FlutterMethodChannel(name: "ios_communication_notification", binaryMessenger: registrar.messenger())

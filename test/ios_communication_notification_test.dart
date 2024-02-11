@@ -35,6 +35,11 @@ class MockIosCommunicationNotificationPlatform
     // TODO: implement cancelAllNotification
     throw UnimplementedError();
   }
+
+  @override
+  void onBackNotification(Function(String payload) onClick) {
+    // TODO: implement onBackNotification
+  }
 }
 
 void main() {
